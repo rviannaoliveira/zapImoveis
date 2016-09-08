@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ZapImoveis</string>
+    <string name="test_address">Rua Almeida de Morais 111</string>
+    <string name="address">Endereço</string>
+    <string name="test_type">Apartamento Padrao</string>
+    <string name="test_price">R$25000.00</string>
+    <string name="test_detail_list">4 dorms, 3 vagas, 168m²</string>
+    <string name="test_sub_sale">PRONTO PARA MORAR</string>
+    <string name="immobile">immobile</string>
+    <string name="test_type_immobile">Apartamento</string>
+    <string name="type_immobile">Tipo de Imovel</string>
+    <string name="price">Preço</string>
+    <string name="dorms">Dorms</string>
+    <string name="value_sell">Valor de Venda</string>
+    <string name="suite">Suite(s)</string>
+    <string name="vacancy">Vaga(s)</string>
+    <string name="area">Area(m²)</string>
+    <string name="test_dorms">4</string>
+    <string name="test_vacancy">2 a 3</string>
+    <string name="test_area">128 a 150</string>
+    <string name="description">Descrição</string>
+    <string name="test_description">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado.</string>
+</resources>

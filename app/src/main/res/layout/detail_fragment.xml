@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/background_back_card">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/zap300"/>
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardCornerRadius="4dp"
+        android:layout_height="60dp"
+        style="@style/card_detail">
+        <LinearLayout style="@style/linear_layout_detail">
+            <ImageView android:src="@drawable/ic_monetization_on_black_24dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:text="@string/type_immobile"/>
+            <LinearLayout style="@style/linear_layout_detail_text">
+                <TextView
+                    style="@style/detail_text"
+                    android:text="@string/value_sell"/>
+                <TextView android:id="@+id/detail_type_immobile"
+                    style="@style/detail_value"
+                    android:layout_width="wrap_content"
+                    android:text="@string/test_type_immobile"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardCornerRadius="4dp"
+        android:layout_height="60dp"
+        style="@style/card_detail">
+        <LinearLayout style="@style/linear_layout_detail">
+            <ImageView android:src="@drawable/ic_location_on_black_24dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:text="@string/type_immobile"/>
+            <LinearLayout style="@style/linear_layout_detail_text">
+                <TextView android:id="@+id/detail_sub_type_immobile"
+                    style="@style/detail_text"
+                    android:text="@string/test_type_immobile"/>
+                <TextView android:id="@+id/detail_address"
+                    style="@style/detail_value"
+                    android:layout_width="wrap_content"
+                    android:text="@string/test_type_immobile"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardCornerRadius="4dp"
+        android:layout_height="60dp"
+        style="@style/card_detail">
+        <LinearLayout style="@style/linear_layout_detail">
+            <ImageView android:src="@drawable/ic_toc_black_24dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:text="@string/type_immobile"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout style="@style/linear_layout_detail_text"
+                    android:layout_width="wrap_content">
+                    <TextView android:id="@+id/detail_dorms"
+                        style="@style/detail_value"
+                        android:text="@string/test_dorms"/>
+                    <TextView
+                        style="@style/detail_text"
+                        android:text="@string/dorms"/>
+                </LinearLayout>
+                <LinearLayout style="@style/linear_layout_detail_text"
+                    android:layout_width="wrap_content">
+                    <TextView android:id="@+id/detail_suite"
+                        style="@style/detail_value"
+                        android:text="@string/test_dorms"/>
+                    <TextView
+                        style="@style/detail_text"
+                        android:text="@string/suite"/>
+                </LinearLayout>
+                <LinearLayout style="@style/linear_layout_detail_text"
+                    android:layout_width="wrap_content">
+                    <TextView android:id="@+id/detail_vacancy"
+                        style="@style/detail_value"
+                        android:text="@string/test_vacancy"/>
+                    <TextView
+                        style="@style/detail_text"
+                        android:text="@string/vacancy"/>
+                </LinearLayout>
+                <LinearLayout style="@style/linear_layout_detail_text"
+                    android:layout_width="match_parent">
+                    <TextView android:id="@+id/detail_area"
+                        style="@style/detail_value"
+                        android:lines="1"
+                        android:text="@string/test_area"/>
+                    <TextView
+                        style="@style/detail_text"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:text="@string/area"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        card_view:cardCornerRadius="4dp"
+        android:layout_height="wrap_content"
+        style="@style/card_detail">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView android:src="@drawable/ic_description_black_24dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/type_immobile"/>
+        </LinearLayout>
+        <LinearLayout style="@style/linear_layout_detail"
+            android:layout_marginStart="39dp">
+            <LinearLayout style="@style/linear_layout_detail_text">
+                <TextView
+                    style="@style/detail_text"
+                    android:text="@string/description"/>
+                <TextView android:id="@+id/detail_description"
+                    style="@style/detail_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/activity_vertical_margin_detail"
+                    android:gravity="start"
+                    android:text="@string/test_description"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+</ScrollView>
