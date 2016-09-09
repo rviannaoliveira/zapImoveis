@@ -1,0 +1,14 @@
+package rviannaoliveira.com.zapimoveis.zap;
+
+import java.util.List;
+
+import rviannaoliveira.com.zapimoveis.domain.Immobile;
+
+/**
+ * Created by rodrigo on 08/09/16.
+ */
+public interface ZapView {
+    void showProgress();
+    void hideProgress();
+    void loadingZaps(List<Immobile> zaps);
+}
