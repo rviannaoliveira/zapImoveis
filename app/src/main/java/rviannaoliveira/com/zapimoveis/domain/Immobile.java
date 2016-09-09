@@ -2,6 +2,8 @@ package rviannaoliveira.com.zapimoveis.domain;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by rodrigo on 08/09/16.
  */
@@ -26,125 +28,103 @@ public class Immobile {
     @SerializedName("UrlImagem")
     private String  urlImagem;
     @SerializedName("SubTipoOferta")
-    private String  subTypeOferta;
+    private String  subTypeSale;
     @SerializedName("SubtipoImovel")
     private String  subType;
     @SerializedName("DataAtualizacao")
     private String dateRefresh;
+    @SerializedName("Observacao")
+    private String observation;
     @SerializedName("Cliente")
     private Client client;
     @SerializedName("Endereco")
     private Address address;
+    @SerializedName("Fotos")
+    private List<String> Photos;
+    private final static String COMMAM = ", ";
+    private final static String EMPTY = "";
+    private final static String DORMS = " dorms";
+    private final static String VACANCY = " vagas";
+    private final static String MQ = " M²";
+    private final static String SEPARATOR = " a ";
 
     public String getCod() {
         return cod;
-    }
-
-    public void setCod(String cod) {
-        this.cod = cod;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getPriceSell() {
         return priceSell;
-    }
-
-    public void setPriceSell(String priceSell) {
-        this.priceSell = priceSell;
     }
 
     public String getDorms() {
         return dorms;
     }
 
-    public void setDorms(String dorms) {
-        this.dorms = dorms;
-    }
-
     public String getSuites() {
         return suites;
-    }
-
-    public void setSuites(String suites) {
-        this.suites = suites;
     }
 
     public String getVacancy() {
         return vacancy;
     }
 
-    public void setVacancy(String vacancy) {
-        this.vacancy = vacancy;
-    }
-
     public String getAreaUtil() {
         return areaUtil;
-    }
-
-    public void setAreaUtil(String areaUtil) {
-        this.areaUtil = areaUtil;
     }
 
     public String getAreaTotal() {
         return areaTotal;
     }
 
-    public void setAreaTotal(String areaTotal) {
-        this.areaTotal = areaTotal;
-    }
-
     public String getUrlImagem() {
         return urlImagem;
     }
 
-    public void setUrlImagem(String urlImagem) {
-        this.urlImagem = urlImagem;
-    }
-
     public String getSubTypeSale() {
-        return subTypeOferta;
-    }
-
-    public void setSubTypeOferta(String subTypeOferta) {
-        this.subTypeOferta = subTypeOferta;
+        return subTypeSale;
     }
 
     public String getSubType() {
         return subType;
     }
 
-    public void setSubType(String subType) {
-        this.subType = subType;
-    }
-
     public String getDateRefresh() {
         return dateRefresh;
     }
 
-    public void setDateRefresh(String dateRefresh) {
-        this.dateRefresh = dateRefresh;
+    public String getObservation() {
+        return observation;
     }
 
     public Client getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     public Address getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public List<String> getPhotos() {
+        return Photos;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(dorms != null && !dorms.isEmpty()? dorms+DORMS+COMMAM: EMPTY);
+        stringBuilder.append(vacancy != null && !vacancy.isEmpty() ? vacancy+VACANCY+COMMAM : EMPTY);
+        stringBuilder.append(areaTotal != null && !areaTotal.isEmpty() ? areaTotal+MQ : EMPTY);
+        return stringBuilder.toString();
+    }
+
+    public String getArea(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(areaUtil != null && !areaUtil.isEmpty()? areaUtil+SEPARATOR: EMPTY);
+        stringBuilder.append(areaTotal != null && !areaTotal.isEmpty()? areaTotal: EMPTY);
+        return stringBuilder.toString();
     }
 }

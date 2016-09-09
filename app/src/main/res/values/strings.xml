@@ -20,4 +20,14 @@
     <string name="test_area">128 a 150</string>
     <string name="description">Descrição</string>
     <string name="test_description">Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado.</string>
+    <string name="type_sell">Tipo de Venda</string>
+    <string name="alert">Alerta</string>
+    <string name="sendSuccess">Enviado com sucesso! Obrigado por utilizar a ZapImóveis</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancelar</string>
+    <string name="name">Nome</string>
+    <string name="email">Email</string>
+    <string name="phone">Telefone</string>
+    <string name="required">Campo obrigatorio</string>
+    <string name="send_message">Enviar mensagem</string>
 </resources>

@@ -24,7 +24,7 @@ public class Address {
     private String complementary;
     private final static String SEPARATOR = " - ";
     private final static String SPACE = " ";
-    private final static String COMMAM = " , ";
+    private final static String COMMAM = ", ";
     private final static String EMPTY = "";
 
     public String getNumber() {

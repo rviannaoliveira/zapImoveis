@@ -8,6 +8,7 @@ import android.os.Bundle;
 import rviannaoliveira.com.zapimoveis.R;
 
 public class ZapActivity extends AppCompatActivity {
+    public final static String KEY = "key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +21,6 @@ public class ZapActivity extends AppCompatActivity {
         FragmentManager fragmentManager = this.getFragmentManager();
         FragmentTransaction transaction =  fragmentManager.beginTransaction();
         transaction.replace(R.id.content, new ZapFragment());
-        transaction.addToBackStack(null);
         transaction.commit();
     }
 }

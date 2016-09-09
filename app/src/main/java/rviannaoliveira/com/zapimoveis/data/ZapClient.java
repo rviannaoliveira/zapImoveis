@@ -1,4 +1,4 @@
-package rviannaoliveira.com.zapimoveis.zap;
+package rviannaoliveira.com.zapimoveis.data;
 
 import android.util.Log;
 
@@ -8,20 +8,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rviannaoliveira.com.zapimoveis.domain.SendMessage;
+import rviannaoliveira.com.zapimoveis.zap.ZapPresenter;
 
 /**
  * Created by rodrigo on 08/09/16.
  */
 public class ZapClient {
     public static final String API_BASE_URL = " http://demo4573903.mockable.io";
-    private ZapPresenter zapPresenter;
+    private ResponseZap responseZap;
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
     private static Retrofit.Builder builder = new Retrofit.Builder()
                                                           .baseUrl(API_BASE_URL)
                                                           .addConverterFactory(GsonConverterFactory.create());
 
-    public ZapClient(ZapPresenter zapPresenter) {
-        this.zapPresenter = zapPresenter;
+    public ZapClient(ResponseZap responseZap) {
+        this.responseZap = responseZap;
     }
 
     public static <S> S createService(Class<S> serviceClass) {
@@ -29,15 +31,33 @@ public class ZapClient {
         return retrofit.create(serviceClass);
     }
 
-    public void requestZaps(Call<ServerResponse> call){
+    public void request(Call<ServerResponse> call){
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                zapPresenter.responseZaps(response.body());
+                responseZap.response(response.body());
             }
-
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
+                Log.i(">>>> ", t.getMessage());
+            }
+
+
+
+
+
+
+
+        });
+    }
+    public void sendMessage(Call<SendMessage> call){
+        call.enqueue(new Callback<SendMessage>() {
+            @Override
+            public void onResponse(Call<SendMessage> call, Response<SendMessage> response) {
+                responseZap.responseSendMessage();
+            }
+            @Override
+            public void onFailure(Call<SendMessage> call, Throwable t) {
                 Log.i(">>>> ", t.getMessage());
             }
         });

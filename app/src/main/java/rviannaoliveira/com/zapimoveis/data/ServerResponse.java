@@ -1,4 +1,4 @@
-package rviannaoliveira.com.zapimoveis.zap;
+package rviannaoliveira.com.zapimoveis.data;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -12,13 +12,15 @@ import rviannaoliveira.com.zapimoveis.domain.Immobile;
  */
 public class ServerResponse implements Serializable {
     @SerializedName("Imoveis")
-    private List<Immobile> imoveis;
+    private List<Immobile> immobiles;
+    @SerializedName("Imovel")
+    private Immobile immobile;
 
-    public List<Immobile> getImoveis() {
-        return imoveis;
+    public List<Immobile> getImmobiles() {
+        return immobiles;
     }
 
-    public void setImoveis(List<Immobile> imoveis) {
-        this.imoveis = imoveis;
+    public Immobile getImmobile() {
+        return immobile;
     }
 }
