@@ -1,12 +1,13 @@
 package rviannaoliveira.com.zapimoveis.detail;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -33,6 +34,7 @@ import rviannaoliveira.com.zapimoveis.zap.ZapActivity;
 public class DetailFragment extends Fragment implements DetailView {
     private Unbinder unbinder;
     private DetailPresenter detailPresenter;
+    private ProgressDialog progress;
     @BindView(R.id.detail_image) ImageView image;
     @BindView(R.id.detail_address)TextView address;
     @BindView(R.id.detail_area)TextView area;
@@ -76,10 +78,6 @@ public class DetailFragment extends Fragment implements DetailView {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_detail, menu);
         super.onCreateOptionsMenu(menu, inflater);
-
-
-
-
     }
 
 
@@ -116,6 +114,16 @@ public class DetailFragment extends Fragment implements DetailView {
                 .setTitle(getActivity().getString(R.string.alert))
                 .setMessage(getActivity().getString(R.string.sendSuccess))
                 .setPositiveButton(getActivity().getString(R.string.ok),null).show();
+    }
+
+    @Override
+    public void showProgressRequest() {
+        progress = ProgressDialog.show(getActivity(), getActivity().getString(R.string.please_wait),getActivity().getString(R.string.wait), true);
+    }
+
+    @Override
+    public void hideProgressResponse() {
+        progress.dismiss();
     }
 
 
@@ -157,6 +165,7 @@ public class DetailFragment extends Fragment implements DetailView {
                     DetailFragment.this.detailPresenter.postContact(name.getText().toString(),
                                                                     email.getText().toString(),
                                                                     phone.getText().toString());
+                    dismiss();
                 }else{
                     name.setError(getActivity().getString(R.string.required));
                     email.setError(getActivity().getString(R.string.required));

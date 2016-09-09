@@ -30,4 +30,7 @@
     <string name="phone">Telefone</string>
     <string name="required">Campo obrigatorio</string>
     <string name="send_message">Enviar mensagem</string>
+    <string name="detail">Detalhe</string>
+    <string name="please_wait">Estamos enviando seus dados</string>
+    <string name="wait">Aguarde…</string>
 </resources>

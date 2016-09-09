@@ -41,13 +41,6 @@ public class ZapClient {
             public void onFailure(Call<ServerResponse> call, Throwable t) {
                 Log.i(">>>> ", t.getMessage());
             }
-
-
-
-
-
-
-
         });
     }
     public void sendMessage(Call<SendMessage> call){

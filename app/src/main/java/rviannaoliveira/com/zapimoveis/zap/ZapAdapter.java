@@ -66,9 +66,10 @@ public class ZapAdapter extends  RecyclerView.Adapter<ZapAdapter.RecyclerHolder>
     };
 
     public void addAll(List<Immobile> list){
-        this.list.addAll(list);
-        this.notifyItemInserted(this.list.size());
-        this.notifyDataSetChanged();
+        for(Immobile immobile : list){
+            this.list.add(immobile);
+            this.notifyDataSetChanged();
+        }
     }
 
     public void clear(){

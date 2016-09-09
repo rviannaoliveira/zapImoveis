@@ -27,6 +27,7 @@ public class DetailPresenterImpl implements DetailPresenter {
 
     @Override
     public void postContact(String name, String phone, String email) {
+        detailView.showProgressRequest();
         SendMessage sendMessage = new SendMessage(name,email,phone);
         ZapService zapService = ZapClient.createService(ZapService.class);
         Call<SendMessage> call = zapService.sendMessage(sendMessage);
@@ -40,6 +41,7 @@ public class DetailPresenterImpl implements DetailPresenter {
 
     @Override
     public void responseSendMessage() {
+        detailView.hideProgressResponse();
         detailView.sendMessageSuccess();
     }
 }

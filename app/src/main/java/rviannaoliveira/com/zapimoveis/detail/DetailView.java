@@ -8,4 +8,6 @@ import rviannaoliveira.com.zapimoveis.domain.Immobile;
 public interface DetailView {
     void setComponents(Immobile immobile);
     void sendMessageSuccess();
+    void showProgressRequest();
+    void hideProgressResponse();
 }
