@@ -3,7 +3,7 @@
     package="rviannaoliveira.com.zapimoveis">
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <application
+    <application android:name=".ZapApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,6 +17,9 @@
         </activity>
         <activity android:name=".detail.DetailActivity"
             android:screenOrientation="portrait"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="84d43c3dae4c24278a12409c12a9c755c3148fe4" />
     </application>
 
 </manifest>
