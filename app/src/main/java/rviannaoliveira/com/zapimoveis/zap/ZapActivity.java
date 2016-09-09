@@ -17,7 +17,6 @@ public class ZapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zap);
         this.showFragment();
-        throw  new RuntimeException();
     }
 
     public void showFragment() {
