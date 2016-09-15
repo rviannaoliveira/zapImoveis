@@ -39,11 +39,11 @@
     <string name="feature_common">Outras Caracteristicas em comum</string>
     <string name="txt_feature_common">Características das Áreas Comuns: </string>
     <string name="txt_information_complementary">Informações complementares: </string>
-    <string name="relevant">Mais relevantes</string>
-    <string name="recent">Mais recentes</string>
     <string name="short_price">Menor valor</string>
-    <string name="near">Mais próximas</string>
     <string name="condominium">Condominio</string>
     <string name="date_refresh">Data de Atualização: </string>
     <string name="test_price_condominium">R$2500,00</string>
+    <string name="txt_dorms">Numero de dormitórios</string>
+    <string name="sort_itens">Ordenando os itens</string>
+    <string name="relevant">Maior relevancia</string>
 </resources>

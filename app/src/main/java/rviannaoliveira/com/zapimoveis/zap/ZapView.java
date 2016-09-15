@@ -10,5 +10,10 @@ import rviannaoliveira.com.zapimoveis.domain.Immobile;
 public interface ZapView {
     void showProgress();
     void hideProgress();
+    void showProgressBar();
+    void hideProgressBar();
     void loadingZaps(List<Immobile> zaps);
+    void sortCheapList();
+    void sortDormsList();
+    void sortRelevantList();
 }

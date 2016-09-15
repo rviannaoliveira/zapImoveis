@@ -7,25 +7,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <android.support.v4.view.ViewPager android:id="@+id/detail_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
-        <LinearLayout
-            android:id="@+id/detail_view_pager_count_dots"
+        android:layout_height="match_parent">
+        <android.support.v4.view.ViewPager android:id="@+id/detail_view_pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:orientation="horizontal" />
+            android:layout_height="250dp"/>
+            <LinearLayout
+                android:id="@+id/detail_view_pager_count_dots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:background="@color/primary_dark">
         <TextView android:id="@+id/detail_sub_type_sale"

@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
         <item
-            android:id="@+id/relevant"
-            android:title="@string/relevant"/>
-        <item
-            android:id="@+id/recent"
-            android:title="@string/recent"/>
-        <item
-            android:id="@+id/short_price"
+            android:id="@+id/cheap_item"
             android:title="@string/short_price"/>
         <item
-            android:id="@+id/near"
-            android:title="@string/near"/>
+            android:id="@+id/dorms_item"
+            android:title="@string/txt_dorms"/>
+        <item
+            android:id="@+id/relevant_item"
+            android:title="@string/relevant"/>
 </menu>

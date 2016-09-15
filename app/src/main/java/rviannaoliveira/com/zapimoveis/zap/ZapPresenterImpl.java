@@ -4,7 +4,6 @@ import retrofit2.Call;
 import rviannaoliveira.com.zapimoveis.data.ServerResponse;
 import rviannaoliveira.com.zapimoveis.data.ZapClient;
 import rviannaoliveira.com.zapimoveis.data.ZapService;
-import rviannaoliveira.com.zapimoveis.domain.SendMessage;
 
 /**
  * Created by rodrigo on 08/09/16.
@@ -32,6 +31,28 @@ public class ZapPresenterImpl implements ZapPresenter {
         Call<ServerResponse> call = zapService.getZaps();
         zapClient.request(call);
     }
+
+    @Override
+    public void sortCheapList() {
+        zapView.showProgressBar();
+        zapView.sortCheapList();
+        zapView.hideProgressBar();
+    }
+
+    @Override
+    public void sortDormsList() {
+        zapView.showProgressBar();
+        zapView.sortDormsList();
+        zapView.hideProgressBar();
+    }
+
+    @Override
+    public void sortRelevantList() {
+        zapView.showProgressBar();
+        zapView.sortRelevantList();
+        zapView.hideProgressBar();
+    }
+
     @Override
     public void responseSendMessage() {
     }

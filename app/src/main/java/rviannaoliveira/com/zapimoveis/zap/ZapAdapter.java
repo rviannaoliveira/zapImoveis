@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -78,6 +80,51 @@ public class ZapAdapter extends  RecyclerView.Adapter<ZapAdapter.RecyclerHolder>
     public void clear(){
         this.list.clear();
         this.notifyDataSetChanged();
+    }
+
+    public List<Immobile> getList(){
+        return list;
+    }
+
+    public void sortCheap(){
+        List<Immobile> list = new ArrayList<>(this.getList());
+        this.clear();
+
+        Collections.sort(list, new Comparator<Immobile>() {
+            @Override
+            public int compare(Immobile immobile, Immobile immobile1) {
+                Integer a = Integer.parseInt(immobile.getPriceSell());
+                Integer b = Integer.parseInt(immobile1.getPriceSell());
+                return a.compareTo(b);
+            }
+        });
+        this.addAll(list);
+    }
+    public void sortDorms(){
+        List<Immobile> list = new ArrayList<>(this.getList());
+        this.clear();
+
+        Collections.sort(list, new Comparator<Immobile>() {
+            @Override
+            public int compare(Immobile immobile, Immobile immobile1) {
+                Integer a = Integer.parseInt(immobile.getDorms());
+                Integer b = Integer.parseInt(immobile1.getDorms());
+                return a.compareTo(b);
+            }
+        });
+        this.addAll(list);
+    }
+    public void sortRelevant(){
+        List<Immobile> list = new ArrayList<>(this.getList());
+        this.clear();
+
+        Collections.sort(list, new Comparator<Immobile>() {
+            @Override
+            public int compare(Immobile immobile, Immobile immobile1) {
+                return immobile.getSubTypeSale().compareTo(immobile1.getSubTypeSale());
+            }
+        });
+        this.addAll(list);
     }
     @Override
     public int getItemCount() {

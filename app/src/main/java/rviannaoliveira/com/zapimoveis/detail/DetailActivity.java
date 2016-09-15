@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 
 import rviannaoliveira.com.zapimoveis.R;
 import rviannaoliveira.com.zapimoveis.zap.ZapActivity;
@@ -22,6 +23,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_zap);
         setTitle(this.getString(R.string.detail));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.gradient_top));
         this.showFragment();
     }

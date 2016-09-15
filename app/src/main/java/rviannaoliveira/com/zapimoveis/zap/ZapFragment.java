@@ -1,6 +1,7 @@
 package rviannaoliveira.com.zapimoveis.zap;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -33,6 +33,7 @@ public class ZapFragment extends Fragment implements ZapView{
     private Unbinder unbinder;
     private ZapPresenter zapPresenter;
     private ZapAdapter zapAdapter;
+    private ProgressDialog dialog;
 
     @Nullable
     @Override
@@ -41,13 +42,11 @@ public class ZapFragment extends Fragment implements ZapView{
         unbinder = ButterKnife.bind(this, layout);
         zapPresenter = new ZapPresenterImpl(this);
         this.setHasOptionsMenu(true);
-
         zapAdapter= new ZapAdapter(getActivity());
         recyclerView.setAdapter(zapAdapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
         return layout;
     }
 
@@ -74,25 +73,29 @@ public class ZapFragment extends Fragment implements ZapView{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         View menuItemView = getActivity().findViewById(R.id.menu_item_sort);
         PopupMenu popup = new PopupMenu(getActivity(), menuItemView);
         popup.getMenuInflater().inflate(R.menu.menu_zap_sort, popup.getMenu());
 
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(getActivity(),"You Clicked : " + item.getTitle(),Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
+        popup.setOnMenuItemClickListener(onMenuItemClickListener);
         popup.show();
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        return super.onContextItemSelected(item);
-    }
+    private PopupMenu.OnMenuItemClickListener onMenuItemClickListener =   new PopupMenu.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            if(item.getItemId() == R.id.cheap_item){
+                zapPresenter.sortCheapList();
+            }else if(item.getItemId() == R.id.dorms_item){
+                zapPresenter.sortDormsList();
+            }else{
+                zapPresenter.sortRelevantList();
+            }
+            return false;
+        }
+    };
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -110,8 +113,32 @@ public class ZapFragment extends Fragment implements ZapView{
     }
 
     @Override
+    public void showProgressBar() {
+        dialog = ProgressDialog.show(getActivity(), getString(R.string.wait),getString(R.string.sort_itens), true, false);
+    }
+
+    @Override
+    public void hideProgressBar() {
+        dialog.cancel();
+    }
+
+    @Override
     public void loadingZaps(List<Immobile> zaps) {
         zapAdapter.addAll(zaps);
     }
 
+    @Override
+    public void sortCheapList() {
+        zapAdapter.sortCheap();
+    }
+
+    @Override
+    public void sortDormsList() {
+        zapAdapter.sortDorms();
+    }
+
+    @Override
+    public void sortRelevantList() {
+        zapAdapter.sortRelevant();
+    }
 }

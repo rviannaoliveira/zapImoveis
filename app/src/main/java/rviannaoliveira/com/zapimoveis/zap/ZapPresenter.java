@@ -7,4 +7,7 @@ import rviannaoliveira.com.zapimoveis.data.ResponseZap;
  */
 public interface ZapPresenter extends ResponseZap{
     void requestZaps();
+    void sortCheapList();
+    void sortDormsList();
+    void sortRelevantList();
 }
