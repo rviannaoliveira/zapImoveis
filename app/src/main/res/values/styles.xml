@@ -48,4 +48,10 @@
         <item name="android:layout_marginBottom">@dimen/activity_vertical_margin_detail</item>
         <item name="android:layout_marginEnd">@dimen/activity_vertical_margin_detail</item>
     </style>
+    <style name="image_detail">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_marginStart">@dimen/activity_vertical_margin_detail</item>
+        <item name="android:layout_marginTop">@dimen/activity_vertical_margin_detail</item>
+    </style>
 </resources>

@@ -8,6 +8,8 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,7 +20,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +40,9 @@ public class DetailFragment extends Fragment implements DetailView {
     private Unbinder unbinder;
     private DetailPresenter detailPresenter;
     private ProgressDialog progress;
-    @BindView(R.id.detail_image) ImageView image;
+    private ImageView[] dots;
+    private int dotsCount;
+
     @BindView(R.id.detail_address)TextView address;
     @BindView(R.id.detail_area)TextView area;
     @BindView(R.id.detail_description)TextView description;
@@ -44,6 +51,14 @@ public class DetailFragment extends Fragment implements DetailView {
     @BindView(R.id.detail_type_immobile)TextView type;
     @BindView(R.id.detail_vacancy)TextView vacancy;
     @BindView(R.id.detail_price)TextView price;
+    @BindView(R.id.detail_name_fantasy)TextView nameFantasy;
+    @BindView(R.id.detail_sub_type_sale)TextView subTypeSale;
+    @BindView(R.id.detail_feature_common)TextView feature;
+    @BindView(R.id.detail_date_refresh)TextView dateRefresh;
+    @BindView(R.id.detail_information_complementary)TextView informationComplementary;
+    @BindView(R.id.detail_price_condominium)TextView priceCondominium;
+    @BindView(R.id.detail_view_pager_count_dots)LinearLayout pagerIndicator;
+    @BindView(R.id.detail_view_pager)ViewPager viewPager;
 
     @Nullable
     @Override
@@ -51,6 +66,7 @@ public class DetailFragment extends Fragment implements DetailView {
         View layout = inflater.inflate(R.layout.detail_fragment, container, false);
         unbinder = ButterKnife.bind(this, layout);
         this.setHasOptionsMenu(true);
+
         detailPresenter = new DetailPresenterImpl(this);
         if(getArguments().containsKey(ZapActivity.KEY)){
             detailPresenter.getZap(getArguments().get(ZapActivity.KEY).toString());
@@ -83,8 +99,12 @@ public class DetailFragment extends Fragment implements DetailView {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        DialogFragment dialogFragment = new DialogSendFragment();
-        dialogFragment.show(getActivity().getFragmentManager(), getActivity().getString(R.string.send_message));
+        if(item.getItemId() == R.id.menu_item_done){
+            DialogFragment dialogFragment = new DialogSendFragment();
+            dialogFragment.show(getActivity().getFragmentManager(), getActivity().getString(R.string.send_message));
+        }else{
+            getActivity().finish();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -95,16 +115,42 @@ public class DetailFragment extends Fragment implements DetailView {
 
     @Override
     public void setComponents(Immobile immobile) {
-        address.setText(immobile.getAddress().toString());
+        address.setText(immobile.getAddress().getTextAddress());
         type.setText(immobile.getType());
         vacancy.setText(immobile.getVacancy());
-        area.setText(immobile.getArea());
+        area.setText(immobile.getTextArea());
         dorms.setText(immobile.getDorms());
         price.setText(Tools.getPriceFormat(immobile.getPriceSell()));
         description.setText(immobile.getObservation());
+        nameFantasy.setText(immobile.getClient().getNameFantasia());
+        subTypeSale.setText(immobile.getSubTypeSale());
+        priceCondominium.setText(Tools.getPriceFormat(immobile.getPriceCondominium()));
+        this.hideFeatures(immobile);
+
         if(immobile.getPhotos() != null && !immobile.getPhotos().isEmpty()){
-            Tools.getImageUrl(getActivity(),immobile.getPhotos().get(0),image);
+            this.loadingViewPager(immobile.getPhotos());
         }
+    }
+
+    private void hideFeatures(Immobile immobile) {
+        if(!Tools.stringNotNullNotEmpty(immobile.getTextFeatures())){
+            feature.setVisibility(View.GONE);
+        }else{
+            feature.setText(getActivity().getString(R.string.txt_feature_common).concat(immobile.getTextFeatures()));
+        }
+        if(!Tools.stringNotNullNotEmpty(immobile.getInformationComplementary())){
+            informationComplementary.setVisibility(View.GONE);
+        }else{
+            informationComplementary.setText(getActivity().getString(R.string.txt_information_complementary).concat(immobile.getInformationComplementary()));
+        }
+    }
+
+    private void loadingViewPager(List<String> photos) {
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity());
+        viewPagerAdapter.addAllItem(photos);
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.addOnPageChangeListener(eventChangePager);
+        this.setUiPageViewController(viewPagerAdapter.getCount());
     }
 
     @Override
@@ -126,6 +172,41 @@ public class DetailFragment extends Fragment implements DetailView {
         progress.dismiss();
     }
 
+    private ViewPager.OnPageChangeListener eventChangePager = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            for (int i = 0; i < dotsCount; i++) {
+                dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.nonselecteditem_dot));
+            }
+            dots[position].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.selecteditem_dot));
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+        }
+    };
+
+    private void setUiPageViewController(int count) {
+        dotsCount = count;
+        dots = new ImageView[dotsCount];
+        for (int i = 0; i < dotsCount; i++) {
+            dots[i] = new ImageView(getActivity());
+            dots[i].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.nonselecteditem_dot));
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.setMargins(4, 0, 4, 0);
+            pagerIndicator.addView(dots[i], params);
+        }
+        dots[0].setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.selecteditem_dot));
+    }
+
 
     class DialogSendFragment extends DialogFragment {
         private EditText name;
@@ -144,8 +225,8 @@ public class DetailFragment extends Fragment implements DetailView {
 
             builder.setView(view)
                     .setTitle(R.string.send_message)
-                    .setNegativeButton(R.string.cancel,null)
-                    .setPositiveButton(R.string.ok,null);
+                    .setNegativeButton(R.string.cancel, null)
+                    .setPositiveButton(R.string.ok, null);
             return builder.create();
         }
 
@@ -155,29 +236,31 @@ public class DetailFragment extends Fragment implements DetailView {
             super.onStart();
             AlertDialog alertDialog = (AlertDialog) getDialog();
             Button okButton = alertDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-            okButton.setOnClickListener(eventOkDataMap);
+            okButton.setOnClickListener(eventOkData);
         }
 
-        private View.OnClickListener eventOkDataMap = new View.OnClickListener() {
+        private View.OnClickListener eventOkData = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(DialogSendFragment.this.valid()){
+                if (DialogSendFragment.this.valid()) {
                     DetailFragment.this.detailPresenter.postContact(name.getText().toString(),
-                                                                    email.getText().toString(),
-                                                                    phone.getText().toString());
+                            email.getText().toString(),
+                            phone.getText().toString());
                     dismiss();
-                }else{
+                } else {
                     name.setError(getActivity().getString(R.string.required));
                     email.setError(getActivity().getString(R.string.required));
                     phone.setError(getActivity().getString(R.string.required));
                 }
             }
         };
-        private boolean valid(){
-            boolean nameValid  = Tools.stringNotNullNotEmpty(name.getText().toString());
+
+        private boolean valid() {
+            boolean nameValid = Tools.stringNotNullNotEmpty(name.getText().toString());
             boolean emailValid = Tools.stringNotNullNotEmpty(email.getText().toString());
             boolean phoneValid = Tools.stringNotNullNotEmpty(phone.getText().toString());
             return nameValid && emailValid && phoneValid;
         }
     }
+
 }

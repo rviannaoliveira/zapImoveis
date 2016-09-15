@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -15,6 +17,10 @@ public class Tools {
     public static String getPriceFormat(String priceSell) {
         NumberFormat format = NumberFormat.getCurrencyInstance(Locale.getDefault());
         return format.format( Integer.valueOf(priceSell));
+    }
+    public static String formatDate(Date date){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MMMM/yyyy");
+        return simpleDateFormat.format(date);
     }
 
     public static void getImageUrl(Context context, String url, ImageView image){
@@ -31,6 +37,5 @@ public class Tools {
         }
         String stringNotSpace = string.trim();
         return stringNotSpace.length() > 0 && !string.isEmpty();
-
     }
 }

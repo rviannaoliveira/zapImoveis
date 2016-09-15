@@ -2,18 +2,42 @@
 <ScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
     android:background="@color/background_back_card">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <ImageView android:id="@+id/detail_image"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
+    <android.support.v4.view.ViewPager android:id="@+id/detail_view_pager"
         android:layout_width="match_parent"
         android:layout_height="200dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <LinearLayout
+            android:id="@+id/detail_view_pager_count_dots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="horizontal" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/primary_dark">
+        <TextView android:id="@+id/detail_sub_type_sale"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"
+            android:text="@string/test_sub_sale"/>
+    </LinearLayout>
     <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        card_view:cardCornerRadius="4dp"
         android:layout_height="60dp"
+        card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
         <LinearLayout style="@style/linear_layout_detail">
             <ImageView android:src="@drawable/ic_monetization_on_black_24dp"
@@ -30,7 +54,8 @@
                     android:layout_width="wrap_content"
                     android:text="@string/test_price"/>
             </LinearLayout>
-            <LinearLayout style="@style/linear_layout_detail_text">
+            <LinearLayout style="@style/linear_layout_detail_text"
+                android:layout_width="wrap_content">
                 <TextView
                     style="@style/detail_text"
                     android:text="@string/type_sell"/>
@@ -39,12 +64,21 @@
                     android:layout_width="wrap_content"
                     android:text="@string/test_type_immobile"/>
             </LinearLayout>
+            <LinearLayout style="@style/linear_layout_detail_text"
+                android:layout_width="wrap_content">
+                <TextView
+                    style="@style/detail_text"
+                    android:text="@string/condominium"/>
+                <TextView android:id="@+id/detail_price_condominium"
+                    style="@style/detail_value"
+                    android:layout_width="wrap_content"
+                    android:text="@string/test_price_condominium"/>
+            </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        card_view:cardCornerRadius="4dp"
         android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
         <LinearLayout
             android:layout_width="match_parent"
@@ -65,7 +99,7 @@
                 <TextView android:id="@+id/detail_address"
                     style="@style/detail_value"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/activity_vertical_margin_detail"
                     android:gravity="start"
                     android:text="@string/test_description"/>
@@ -74,8 +108,8 @@
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        card_view:cardCornerRadius="4dp"
         android:layout_height="60dp"
+        card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
         <LinearLayout style="@style/linear_layout_detail">
             <ImageView android:src="@drawable/ic_toc_black_24dp"
@@ -129,9 +163,84 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        card_view:cardCornerRadius="4dp"
         android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
+        style="@style/card_detail">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView android:src="@drawable/ic_account_box_black_24dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/type_immobile"/>
+        </LinearLayout>
+        <LinearLayout style="@style/linear_layout_detail"
+            android:layout_marginStart="39dp">
+            <LinearLayout style="@style/linear_layout_detail_text">
+                <TextView
+                    style="@style/detail_text"
+                    android:text="@string/name_advertiser"/>
+                <TextView android:id="@+id/detail_name_fantasy"
+                    style="@style/detail_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/activity_vertical_margin_detail"
+                    android:gravity="start"
+                    android:text="@string/test_name"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
+        style="@style/card_detail">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView android:src="@drawable/ic_chrome_reader_mode_black_24dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:text="@string/type_immobile"/>
+        </LinearLayout>
+        <LinearLayout style="@style/linear_layout_detail"
+            android:layout_marginStart="39dp">
+            <LinearLayout style="@style/linear_layout_detail_text">
+                <TextView
+                    style="@style/detail_text"
+                    android:text="@string/feature_common"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView android:id="@+id/detail_feature_common"
+                        style="@style/detail_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"/>
+                    <TextView android:id="@+id/detail_information_complementary"
+                        style="@style/detail_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/activity_vertical_margin_detail"
+                        android:gravity="start"/>
+                    <TextView android:id="@+id/detail_date_refresh"
+                        style="@style/detail_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/activity_vertical_margin_detail"
+                        android:gravity="start"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,7 +261,7 @@
                 <TextView android:id="@+id/detail_description"
                     style="@style/detail_value"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/activity_vertical_margin_detail"
                     android:gravity="start"
                     android:text="@string/test_description"/>

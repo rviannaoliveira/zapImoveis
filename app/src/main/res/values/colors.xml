@@ -9,4 +9,5 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="background_back_card">#f4f4f4</color>
+    <color name="indicator">#dfe4e7</color>
 </resources>

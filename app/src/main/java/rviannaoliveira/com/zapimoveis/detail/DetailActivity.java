@@ -2,7 +2,10 @@ package rviannaoliveira.com.zapimoveis.detail;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import rviannaoliveira.com.zapimoveis.R;
@@ -18,6 +21,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zap);
         setTitle(this.getString(R.string.detail));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.gradient_top));
         this.showFragment();
     }
 

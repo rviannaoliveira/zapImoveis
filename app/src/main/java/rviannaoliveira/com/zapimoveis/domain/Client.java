@@ -27,4 +27,12 @@ public class Client {
     public void setNameFantasia(String nameFantasia) {
         this.nameFantasia = nameFantasia;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "cod='" + cod + '\'' +
+                ", nameFantasia='" + nameFantasia + '\'' +
+                '}';
+    }
 }

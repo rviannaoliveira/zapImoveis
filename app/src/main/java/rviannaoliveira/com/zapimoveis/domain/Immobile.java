@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import rviannaoliveira.com.zapimoveis.Tools;
+
 /**
  * Created by rodrigo on 08/09/16.
  */
@@ -26,7 +28,7 @@ public class Immobile {
     @SerializedName("AreaTotal")
     private String  areaTotal;
     @SerializedName("UrlImagem")
-    private String  urlImagem;
+    private String  urlImage;
     @SerializedName("SubTipoOferta")
     private String  subTypeSale;
     @SerializedName("SubtipoImovel")
@@ -39,8 +41,19 @@ public class Immobile {
     private Client client;
     @SerializedName("Endereco")
     private Address address;
+    @SerializedName("EstagioObra")
+    private String stageWork;
+    @SerializedName("StatusQualidadeTotal")
+    private String statusQuality;
     @SerializedName("Fotos")
     private List<String> Photos;
+    @SerializedName("Caracteristicas")
+    private List<String> feature;
+    @SerializedName("InformacoesComplementares")
+    private String informationComplementary;
+    @SerializedName("PrecoCondominio")
+    private String priceCondominium;
+
     private final static String COMMAM = ", ";
     private final static String EMPTY = "";
     private final static String DORMS = " dorms";
@@ -80,8 +93,8 @@ public class Immobile {
         return areaTotal;
     }
 
-    public String getUrlImagem() {
-        return urlImagem;
+    public String getUrlImage() {
+        return urlImage;
     }
 
     public String getSubTypeSale() {
@@ -108,23 +121,79 @@ public class Immobile {
         return address;
     }
 
+    public String getStageWork() {
+        return stageWork;
+    }
+
+    public String getStatusQuality() {
+        return statusQuality;
+    }
+
     public List<String> getPhotos() {
         return Photos;
     }
 
-    @Override
-    public String toString() {
+    public List<String> getFeature() {
+        return feature;
+    }
+
+    public String getInformationComplementary() {
+        return informationComplementary;
+    }
+
+    public String getPriceCondominium() {
+        return priceCondominium;
+    }
+
+    public String getTextImmobile() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(dorms != null && !dorms.isEmpty()? dorms+DORMS+COMMAM: EMPTY);
-        stringBuilder.append(vacancy != null && !vacancy.isEmpty() ? vacancy+VACANCY+COMMAM : EMPTY);
-        stringBuilder.append(areaTotal != null && !areaTotal.isEmpty() ? areaTotal+MQ : EMPTY);
+        stringBuilder.append(Tools.stringNotNullNotEmpty(dorms)? dorms+DORMS+COMMAM: EMPTY);
+        stringBuilder.append(Tools.stringNotNullNotEmpty(vacancy) ? vacancy+VACANCY+COMMAM : EMPTY);
+        stringBuilder.append(Tools.stringNotNullNotEmpty(areaTotal)? areaTotal+MQ : EMPTY);
         return stringBuilder.toString();
     }
 
-    public String getArea(){
+    public String getTextArea(){
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(areaUtil != null && !areaUtil.isEmpty()? areaUtil+SEPARATOR: EMPTY);
-        stringBuilder.append(areaTotal != null && !areaTotal.isEmpty()? areaTotal: EMPTY);
+        stringBuilder.append(Tools.stringNotNullNotEmpty(areaUtil)? areaUtil+SEPARATOR: EMPTY);
+        stringBuilder.append(Tools.stringNotNullNotEmpty(areaTotal)? areaTotal: EMPTY);
         return stringBuilder.toString();
+    }
+
+    public String getTextFeatures(){
+        StringBuilder stringBuilder = new StringBuilder();
+        String word = null;
+
+        for (int i = 0; i < feature.size(); i++) {
+            word = feature.get(i);
+            if(i+1 == feature.size()){
+                stringBuilder.append(Tools.stringNotNullNotEmpty(word)? word: EMPTY);
+            }else{
+                stringBuilder.append(Tools.stringNotNullNotEmpty(word)? word+COMMAM: EMPTY);
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Immobile{" +
+                "cod='" + cod + '\'' +
+                ", type='" + type + '\'' +
+                ", priceSell='" + priceSell + '\'' +
+                ", dorms='" + dorms + '\'' +
+                ", suites='" + suites + '\'' +
+                ", vacancy='" + vacancy + '\'' +
+                ", areaUtil='" + areaUtil + '\'' +
+                ", areaTotal='" + areaTotal + '\'' +
+                ", urlImagem='" + urlImage + '\'' +
+                ", subTypeSale='" + subTypeSale + '\'' +
+                ", subType='" + subType + '\'' +
+                ", dateRefresh='" + dateRefresh + '\'' +
+                ", observation='" + observation + '\'' +
+                ", client=" + client +
+                ", address=" + address +
+                ", Photos=" + Photos +
+                '}';
     }
 }

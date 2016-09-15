@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import rviannaoliveira.com.zapimoveis.R;
 import rviannaoliveira.com.zapimoveis.Tools;
@@ -43,14 +44,16 @@ public class ZapAdapter extends  RecyclerView.Adapter<ZapAdapter.RecyclerHolder>
     public void onBindViewHolder(ZapAdapter.RecyclerHolder holder, int position) {
         if (!list.isEmpty()) {
             Immobile immobile = list.get(position);
-            holder.address.setText(immobile.getAddress().toString());
+            holder.address.setText(immobile.getAddress().getTextAddress());
             holder.subType.setText(immobile.getSubType());
             holder.price.setText(Tools.getPriceFormat(immobile.getPriceSell()));
             holder.subTypeSale.setText(immobile.getSubTypeSale());
-            holder.detail.setText(immobile.toString());
-            Tools.getImageUrl(context,immobile.getUrlImagem(),holder.image);
+            holder.detail.setText(immobile.getTextImmobile());
+            Tools.getImageUrl(context,immobile.getUrlImage(),holder.image);
             holder.linearLayout.setOnClickListener(eventShowDetail);
             holder.linearLayout.setTag(immobile.getCod());
+            holder.linearLayoutSub.setBackgroundResource(R.drawable.gradient_top);
+            holder.linearLayoutSale.setBackgroundResource(R.drawable.gradient_bottom);
         }
     }
 
@@ -83,19 +86,28 @@ public class ZapAdapter extends  RecyclerView.Adapter<ZapAdapter.RecyclerHolder>
 
 
     class RecyclerHolder extends RecyclerView.ViewHolder {
-        TextView subType, price,address, detail,subTypeSale;
+        @BindView(R.id.sub_type_immobile)
+        TextView subType;
+        @BindView(R.id.price)
+        TextView price;
+        @BindView(R.id.address)
+        TextView address;
+        @BindView(R.id.detail)
+        TextView detail;
+        @BindView(R.id.sub_type_sale)
+        TextView subTypeSale;
+        @BindView(R.id.image)
         ImageView image;
+        @BindView(R.id.linear_layout_subtype)
+        LinearLayout linearLayoutSub;
+        @BindView(R.id.linear_layout_sale)
+        LinearLayout linearLayoutSale;
+        @BindView(R.id.linear_layout_zap)
         LinearLayout linearLayout;
 
         private RecyclerHolder(View itemView) {
             super(itemView);
-            subType = ButterKnife.findById(itemView,R.id.sub_type_immobile);
-            price = ButterKnife.findById(itemView,R.id.price);
-            address = ButterKnife.findById(itemView,R.id.address);
-            subTypeSale = ButterKnife.findById(itemView,R.id.sub_type_sale);
-            image = ButterKnife.findById(itemView,R.id.image);
-            linearLayout = ButterKnife.findById(itemView,R.id.linear_layout_zap);
-            detail = ButterKnife.findById(itemView,R.id.detail);
+            ButterKnife.bind(this,itemView);
         }
 
     }
