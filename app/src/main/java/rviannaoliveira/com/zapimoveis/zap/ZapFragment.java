@@ -113,7 +113,9 @@ public class ZapFragment extends Fragment implements ZapView{
 
     @Override
     public void hideProgress() {
-        progressBar.setVisibility(View.GONE);
+        if(progressBar != null){
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
     @Override
