@@ -35,34 +35,44 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <android.support.v7.widget.CardView
-        android:layout_height="60dp"
         card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
-        <LinearLayout style="@style/linear_layout_detail">
-            <ImageView android:src="@drawable/ic_monetization_on_black_24dp"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:text="@string/type_immobile"/>
-            <LinearLayout style="@style/linear_layout_detail_text"
-                android:layout_width="wrap_content">
-                <TextView
-                    style="@style/detail_text"
-                    android:text="@string/value_sell"/>
-                <TextView android:id="@+id/detail_price"
-                    style="@style/detail_value"
-                    android:layout_width="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+            <LinearLayout style="@style/linear_layout_detail">
+                <ImageView android:src="@drawable/ic_monetization_on_black_24dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="@string/type_immobile"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout style="@style/linear_layout_detail_text"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            style="@style/detail_text"
+                            android:text="@string/value_sell"/>
+                        <TextView android:id="@+id/detail_price"
+                            style="@style/detail_value"
+                            android:layout_width="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout style="@style/linear_layout_detail_text"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            style="@style/detail_text"
+                            android:text="@string/type_sell"/>
+                        <TextView android:id="@+id/detail_type_immobile"
+                            style="@style/detail_value"
+                            android:layout_width="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout style="@style/linear_layout_detail_text"
-                android:layout_width="wrap_content">
-                <TextView
-                    style="@style/detail_text"
-                    android:text="@string/type_sell"/>
-                <TextView android:id="@+id/detail_type_immobile"
-                    style="@style/detail_value"
-                    android:layout_width="wrap_content" />
-            </LinearLayout>
-            <LinearLayout style="@style/linear_layout_detail_text"
-                android:layout_width="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_marginStart="55dp">
                 <TextView
                     style="@style/detail_text"
                     android:text="@string/condominium"/>
@@ -73,7 +83,6 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
-        android:layout_height="wrap_content"
         card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
         <LinearLayout
@@ -103,7 +112,6 @@
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:layout_height="60dp"
         card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
         <LinearLayout style="@style/linear_layout_detail">
@@ -154,7 +162,6 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
-        android:layout_height="wrap_content"
         card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
         <LinearLayout
@@ -183,7 +190,6 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
-        android:layout_height="wrap_content"
         card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
         <LinearLayout
@@ -229,7 +235,6 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
     <android.support.v7.widget.CardView
-        android:layout_height="wrap_content"
         card_view:cardCornerRadius="4dp"
         style="@style/card_detail">
         <LinearLayout

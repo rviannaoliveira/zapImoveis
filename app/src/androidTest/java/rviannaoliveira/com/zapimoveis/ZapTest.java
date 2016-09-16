@@ -98,7 +98,7 @@ public class ZapTest {
     private void roda_lista(){
         if(doesViewExist(R.id.zap_list)) {
             for (int i = 0; i < 9; i++) {
-                onView(withId(R.id.zap_list)).perform(RecyclerViewActions.actionOnItemAtPosition(i, new ClickOnImageView()));onView(withId(R.id.menu_item_done)).perform(click());
+                onView(withId(R.id.zap_list)).perform(RecyclerViewActions.actionOnItemAtPosition(i, new ClickOnImageView()));
                 if(i != 8){
                     onView(withContentDescription("Navigate up")).perform(click());
                 }

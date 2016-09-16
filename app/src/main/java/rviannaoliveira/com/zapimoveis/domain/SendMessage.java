@@ -12,11 +12,14 @@ public class SendMessage {
     private String email;
     @SerializedName("telefone")
     private String phone;
+    @SerializedName("CodImovel")
+    private String codAnnouncement;
 
-    public SendMessage(String name, String email, String phone) {
+    public SendMessage(String name, String email, String phone, String codAnnouncement) {
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.codAnnouncement = codAnnouncement;
     }
 
     public String getName() {

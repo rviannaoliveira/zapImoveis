@@ -7,5 +7,5 @@ import rviannaoliveira.com.zapimoveis.data.ResponseZap;
  */
 public interface DetailPresenter extends ResponseZap {
     void getZap(String cod);
-    void postContact(String name, String phone, String email);
+    void postContact(String name, String phone, String email, String codAnnouncement);
 }

@@ -26,9 +26,9 @@ public class DetailPresenterImpl implements DetailPresenter {
     }
 
     @Override
-    public void postContact(String name, String phone, String email) {
+    public void postContact(String name, String phone, String email, String codAnnouncement) {
         detailView.showProgressRequest();
-        SendMessage sendMessage = new SendMessage(name,email,phone);
+        SendMessage sendMessage = new SendMessage(name,email,phone,codAnnouncement);
         ZapService zapService = ZapClient.createService(ZapService.class);
         Call<SendMessage> call = zapService.sendMessage(sendMessage);
         zapClient.sendMessage(call);

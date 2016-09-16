@@ -45,6 +45,7 @@ public class DetailFragment extends Fragment implements DetailView {
     private ProgressDialog progress;
     private ImageView[] dots;
     private int dotsCount;
+    private String codAnnouncement;
 
     @BindView(R.id.detail_address)TextView address;
     @BindView(R.id.detail_area)TextView area;
@@ -129,6 +130,7 @@ public class DetailFragment extends Fragment implements DetailView {
         nameFantasy.setText(immobile.getClient().getNameFantasia());
         subTypeSale.setText(immobile.getSubTypeSale());
         priceCondominium.setText(Tools.getPriceFormat(immobile.getPriceCondominium()));
+        codAnnouncement = immobile.getCod();
         this.hideFeatures(immobile);
 
         if(immobile.getPhotos() != null && !immobile.getPhotos().isEmpty()){
@@ -257,7 +259,8 @@ public class DetailFragment extends Fragment implements DetailView {
                 if (valid()) {
                     DetailFragment.this.detailPresenter.postContact(name.getText().toString(),
                             email.getText().toString(),
-                            phone.getText().toString());
+                            phone.getText().toString(),
+                            codAnnouncement);
                     dismiss();
                 }
             }
