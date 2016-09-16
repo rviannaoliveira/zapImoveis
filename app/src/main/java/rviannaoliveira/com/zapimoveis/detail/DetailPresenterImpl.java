@@ -44,4 +44,9 @@ public class DetailPresenterImpl implements DetailPresenter {
         detailView.hideProgressResponse();
         detailView.sendMessageSuccess();
     }
+
+    @Override
+    public void error() {
+        detailView.error();
+    }
 }

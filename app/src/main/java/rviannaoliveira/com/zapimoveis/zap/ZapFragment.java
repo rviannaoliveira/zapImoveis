@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -140,5 +141,10 @@ public class ZapFragment extends Fragment implements ZapView{
     @Override
     public void sortRelevantList() {
         zapAdapter.sortRelevant();
+    }
+
+    @Override
+    public void error() {
+        Toast.makeText(getActivity(), R.string.txt_error,Toast.LENGTH_LONG).show();
     }
 }

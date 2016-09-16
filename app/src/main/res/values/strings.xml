@@ -46,4 +46,7 @@
     <string name="txt_dorms">Numero de dormitórios</string>
     <string name="sort_itens">Ordenando os itens</string>
     <string name="relevant">Maior relevancia</string>
+    <string name="txt_error">Desculpe, no momento não foi possível completar esta ação, tente novamente mais tarde</string>
+    <string name="valid_email">Não é um email válido</string>
+    <string name="valid_phone">Formato de telefone invalido</string>
 </resources>

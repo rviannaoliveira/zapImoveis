@@ -16,4 +16,5 @@ public interface ZapView {
     void sortCheapList();
     void sortDormsList();
     void sortRelevantList();
+    void error();
 }

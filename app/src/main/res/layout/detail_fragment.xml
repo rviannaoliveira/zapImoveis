@@ -32,8 +32,7 @@
             android:layout_width="match_parent"
             android:gravity="center_horizontal"
             android:textColor="@android:color/white"
-            android:layout_height="wrap_content"
-            android:text="@string/test_sub_sale"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
     <android.support.v7.widget.CardView
         android:layout_height="60dp"
@@ -51,8 +50,7 @@
                     android:text="@string/value_sell"/>
                 <TextView android:id="@+id/detail_price"
                     style="@style/detail_value"
-                    android:layout_width="wrap_content"
-                    android:text="@string/test_price"/>
+                    android:layout_width="wrap_content"/>
             </LinearLayout>
             <LinearLayout style="@style/linear_layout_detail_text"
                 android:layout_width="wrap_content">
@@ -61,8 +59,7 @@
                     android:text="@string/type_sell"/>
                 <TextView android:id="@+id/detail_type_immobile"
                     style="@style/detail_value"
-                    android:layout_width="wrap_content"
-                    android:text="@string/test_type_immobile"/>
+                    android:layout_width="wrap_content" />
             </LinearLayout>
             <LinearLayout style="@style/linear_layout_detail_text"
                 android:layout_width="wrap_content">
@@ -71,8 +68,7 @@
                     android:text="@string/condominium"/>
                 <TextView android:id="@+id/detail_price_condominium"
                     style="@style/detail_value"
-                    android:layout_width="wrap_content"
-                    android:text="@string/test_price_condominium"/>
+                    android:layout_width="wrap_content"/>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -101,8 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/activity_vertical_margin_detail"
-                    android:gravity="start"
-                    android:text="@string/test_description"/>
+                    android:gravity="start"/>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -123,8 +118,7 @@
                 <LinearLayout style="@style/linear_layout_detail_text"
                     android:layout_width="wrap_content">
                     <TextView android:id="@+id/detail_dorms"
-                        style="@style/detail_value"
-                        android:text="@string/test_dorms"/>
+                        style="@style/detail_value"/>
                     <TextView
                         style="@style/detail_text"
                         android:text="@string/dorms"/>
@@ -132,8 +126,7 @@
                 <LinearLayout style="@style/linear_layout_detail_text"
                     android:layout_width="wrap_content">
                     <TextView android:id="@+id/detail_suite"
-                        style="@style/detail_value"
-                        android:text="@string/test_dorms"/>
+                        style="@style/detail_value"/>
                     <TextView
                         style="@style/detail_text"
                         android:text="@string/suite"/>
@@ -141,8 +134,7 @@
                 <LinearLayout style="@style/linear_layout_detail_text"
                     android:layout_width="wrap_content">
                     <TextView android:id="@+id/detail_vacancy"
-                        style="@style/detail_value"
-                        android:text="@string/test_vacancy"/>
+                        style="@style/detail_value"/>
                     <TextView
                         style="@style/detail_text"
                         android:text="@string/vacancy"/>
@@ -151,8 +143,7 @@
                     android:layout_width="wrap_content">
                     <TextView android:id="@+id/detail_area"
                         style="@style/detail_value"
-                        android:lines="1"
-                        android:text="@string/test_area"/>
+                        android:lines="1"/>
                     <TextView
                         style="@style/detail_text"
                         android:gravity="center"
@@ -187,8 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/activity_vertical_margin_detail"
-                    android:gravity="start"
-                    android:text="@string/test_name"/>
+                    android:gravity="start"/>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
@@ -263,8 +253,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/activity_vertical_margin_detail"
-                    android:gravity="start"
-                    android:text="@string/test_description"/>
+                    android:gravity="start"/>
             </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>

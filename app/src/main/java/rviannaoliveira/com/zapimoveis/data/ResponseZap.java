@@ -6,4 +6,5 @@ package rviannaoliveira.com.zapimoveis.data;
 public interface ResponseZap {
     void response(ServerResponse serverResponse);
     void responseSendMessage();
+    void error();
 }

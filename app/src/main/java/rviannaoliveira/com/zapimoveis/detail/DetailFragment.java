@@ -22,7 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import java.util.List;
 
 import butterknife.BindView;
@@ -101,6 +101,7 @@ public class DetailFragment extends Fragment implements DetailView {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.menu_item_done){
             DialogFragment dialogFragment = new DialogSendFragment();
+            dialogFragment.setCancelable(false);
             dialogFragment.show(getActivity().getFragmentManager(), getActivity().getString(R.string.send_message));
         }else{
             getActivity().finish();
@@ -156,7 +157,7 @@ public class DetailFragment extends Fragment implements DetailView {
     @Override
     public void sendMessageSuccess() {
         new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), android.R.style.Theme_DeviceDefault_Light))
-                .setIcon(R.drawable.ic_warning_white_24dp)
+                .setIcon(R.drawable.ic_warning_black_24dp)
                 .setTitle(getActivity().getString(R.string.alert))
                 .setMessage(getActivity().getString(R.string.sendSuccess))
                 .setPositiveButton(getActivity().getString(R.string.ok),null).show();
@@ -170,6 +171,12 @@ public class DetailFragment extends Fragment implements DetailView {
     @Override
     public void hideProgressResponse() {
         progress.dismiss();
+    }
+
+    @Override
+    public void error() {
+        Toast.makeText(getActivity(), R.string.txt_error,Toast.LENGTH_LONG).show();
+        getActivity().finish();
     }
 
     private ViewPager.OnPageChangeListener eventChangePager = new ViewPager.OnPageChangeListener() {
@@ -209,9 +216,12 @@ public class DetailFragment extends Fragment implements DetailView {
 
 
     class DialogSendFragment extends DialogFragment {
-        private EditText name;
-        private EditText email;
-        private EditText phone;
+        @BindView(R.id.name_dialog)
+        EditText name;
+        @BindView(R.id.email_dialog)
+        EditText email;
+        @BindView(R.id.phone_dialog)
+        EditText phone;
 
         @NonNull
         @Override
@@ -219,9 +229,7 @@ public class DetailFragment extends Fragment implements DetailView {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             LayoutInflater inflater = getActivity().getLayoutInflater();
             View view = inflater.inflate(R.layout.dialog_send_message, null);
-            name = (EditText) view.findViewById(R.id.name_dialog);
-            email = (EditText) view.findViewById(R.id.email_dialog);
-            phone = (EditText) view.findViewById(R.id.phone_dialog);
+            ButterKnife.bind(this,view);
 
             builder.setView(view)
                     .setTitle(R.string.send_message)
@@ -242,24 +250,45 @@ public class DetailFragment extends Fragment implements DetailView {
         private View.OnClickListener eventOkData = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (DialogSendFragment.this.valid()) {
+                if (valid()) {
                     DetailFragment.this.detailPresenter.postContact(name.getText().toString(),
                             email.getText().toString(),
                             phone.getText().toString());
                     dismiss();
-                } else {
-                    name.setError(getActivity().getString(R.string.required));
-                    email.setError(getActivity().getString(R.string.required));
-                    phone.setError(getActivity().getString(R.string.required));
                 }
             }
         };
 
-        private boolean valid() {
-            boolean nameValid = Tools.stringNotNullNotEmpty(name.getText().toString());
-            boolean emailValid = Tools.stringNotNullNotEmpty(email.getText().toString());
-            boolean phoneValid = Tools.stringNotNullNotEmpty(phone.getText().toString());
-            return nameValid && emailValid && phoneValid;
+        private boolean valid(){
+            boolean email = validEmail();
+            boolean name  = validName();
+            boolean phone = validPhone();
+            return email && name && phone;
+        }
+
+        private boolean validEmail() {
+            if(!Tools.stringNotNullNotEmpty(email.getText().toString())){
+                email.setError(getActivity().getString(R.string.required));
+            }else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
+                email.setError(getActivity().getString(R.string.valid_email));
+            }
+
+            return Tools.stringNotNullNotEmpty(email.getText().toString()) && android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches();
+        }
+
+        private boolean validName() {
+            if(!Tools.stringNotNullNotEmpty(name.getText().toString())){
+                name.setError(getActivity().getString(R.string.required));
+            }
+            return Tools.stringNotNullNotEmpty(name.getText().toString());
+        }
+        private boolean validPhone() {
+            if(!Tools.stringNotNullNotEmpty(phone.getText().toString())){
+                phone.setError(getActivity().getString(R.string.required));
+            }else if(phone.getText().toString().length() != 11){
+                phone.setError(getActivity().getString(R.string.valid_phone));
+            }
+           return Tools.stringNotNullNotEmpty(phone.getText().toString()) && phone.getText().toString().length() == 11;
         }
     }
 

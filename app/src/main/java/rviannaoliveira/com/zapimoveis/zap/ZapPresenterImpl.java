@@ -56,4 +56,10 @@ public class ZapPresenterImpl implements ZapPresenter {
     @Override
     public void responseSendMessage() {
     }
+
+    @Override
+    public void error() {
+        zapView.hideProgressBar();
+        zapView.error();
+    }
 }

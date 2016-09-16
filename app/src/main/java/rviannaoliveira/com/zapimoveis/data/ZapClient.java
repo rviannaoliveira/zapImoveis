@@ -17,6 +17,7 @@ import rviannaoliveira.com.zapimoveis.zap.ZapPresenter;
 public class ZapClient {
     public static final String API_BASE_URL = " http://demo4573903.mockable.io";
     private ResponseZap responseZap;
+    private static final int RESULT_OK = 200;
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
     private static Retrofit.Builder builder = new Retrofit.Builder()
                                                           .baseUrl(API_BASE_URL)
@@ -35,7 +36,11 @@ public class ZapClient {
         call.enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                responseZap.response(response.body());
+                if(response.code() == RESULT_OK && response.body() != null){
+                    responseZap.response(response.body());
+                }else{
+                    responseZap.error();
+                }
             }
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
@@ -47,7 +52,11 @@ public class ZapClient {
         call.enqueue(new Callback<SendMessage>() {
             @Override
             public void onResponse(Call<SendMessage> call, Response<SendMessage> response) {
-                responseZap.responseSendMessage();
+                if(response.code() == RESULT_OK){
+                    responseZap.responseSendMessage();
+                }else{
+                    responseZap.error();
+                }
             }
             @Override
             public void onFailure(Call<SendMessage> call, Throwable t) {

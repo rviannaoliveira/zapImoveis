@@ -10,4 +10,5 @@ public interface DetailView {
     void sendMessageSuccess();
     void showProgressRequest();
     void hideProgressResponse();
+    void error();
 }
