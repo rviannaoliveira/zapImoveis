@@ -23,6 +23,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.crashlytics.android.Crashlytics;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -174,8 +177,9 @@ public class DetailFragment extends Fragment implements DetailView {
     }
 
     @Override
-    public void error() {
+    public void error(String error) {
         Toast.makeText(getActivity(), R.string.txt_error,Toast.LENGTH_LONG).show();
+        Crashlytics.logException(new RuntimeException(error));
         getActivity().finish();
     }
 

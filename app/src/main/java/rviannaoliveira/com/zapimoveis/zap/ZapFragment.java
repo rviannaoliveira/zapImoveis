@@ -17,11 +17,14 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.crashlytics.android.Crashlytics;
+
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.fabric.sdk.android.Fabric;
 import rviannaoliveira.com.zapimoveis.R;
 import rviannaoliveira.com.zapimoveis.domain.Immobile;
 
@@ -144,7 +147,8 @@ public class ZapFragment extends Fragment implements ZapView{
     }
 
     @Override
-    public void error() {
+    public void error(String error) {
         Toast.makeText(getActivity(), R.string.txt_error,Toast.LENGTH_LONG).show();
+        Crashlytics.logException(new RuntimeException(error));
     }
 }

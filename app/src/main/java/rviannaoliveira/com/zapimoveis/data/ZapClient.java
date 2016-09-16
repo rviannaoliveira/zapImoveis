@@ -9,7 +9,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rviannaoliveira.com.zapimoveis.domain.SendMessage;
-import rviannaoliveira.com.zapimoveis.zap.ZapPresenter;
 
 /**
  * Created by rodrigo on 08/09/16.
@@ -39,12 +38,12 @@ public class ZapClient {
                 if(response.code() == RESULT_OK && response.body() != null){
                     responseZap.response(response.body());
                 }else{
-                    responseZap.error();
+                    responseZap.error(String.valueOf(response.code()).concat(" - ").concat(response.message()));
                 }
             }
             @Override
             public void onFailure(Call<ServerResponse> call, Throwable t) {
-                Log.i(">>>> ", t.getMessage());
+                responseZap.error(t.getMessage());
             }
         });
     }
@@ -55,12 +54,12 @@ public class ZapClient {
                 if(response.code() == RESULT_OK){
                     responseZap.responseSendMessage();
                 }else{
-                    responseZap.error();
+                    responseZap.error(String.valueOf(response.code()).concat(" - ").concat(response.message()));
                 }
             }
             @Override
             public void onFailure(Call<SendMessage> call, Throwable t) {
-                Log.i(">>>> ", t.getMessage());
+                responseZap.error(t.getMessage());
             }
         });
     }

@@ -46,7 +46,7 @@ public class DetailPresenterImpl implements DetailPresenter {
     }
 
     @Override
-    public void error() {
-        detailView.error();
+    public void error(String s) {
+        detailView.error(s);
     }
 }

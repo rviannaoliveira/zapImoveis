@@ -58,8 +58,8 @@ public class ZapPresenterImpl implements ZapPresenter {
     }
 
     @Override
-    public void error() {
+    public void error(String s) {
         zapView.hideProgressBar();
-        zapView.error();
+        zapView.error(s);
     }
 }
