@@ -28,7 +28,7 @@
         <item name="android:gravity">center_horizontal</item>
     </style>
     <style name="linear_layout_detail">
-        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:orientation">horizontal</item>
@@ -54,5 +54,8 @@
         <item name="android:layout_height">24dp</item>
         <item name="android:layout_marginStart">@dimen/activity_vertical_margin_detail</item>
         <item name="android:layout_marginTop">@dimen/activity_vertical_margin_detail</item>
+    </style>
+    <style name="TransparentActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBarOverlay">true</item>
     </style>
 </resources>

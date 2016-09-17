@@ -21,7 +21,7 @@
                 android:layout_alignParentBottom="true"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingBottom="10dp"/>
+                android:paddingBottom="8dp"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="8dp"
             android:orientation="vertical">
             <LinearLayout style="@style/linear_layout_detail">
                 <ImageView android:src="@drawable/ic_monetization_on_black_24dp"
@@ -87,7 +87,8 @@
         style="@style/card_detail">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp">
             <ImageView android:src="@drawable/ic_location_on_black_24dp"
                 android:layout_width="24dp"
                 android:layout_height="24dp"

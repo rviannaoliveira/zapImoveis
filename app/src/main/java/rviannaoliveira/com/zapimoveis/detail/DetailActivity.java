@@ -23,7 +23,6 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_zap);
         setTitle(this.getString(R.string.detail));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(this,R.drawable.gradient_top));
         this.showFragment();
     }
