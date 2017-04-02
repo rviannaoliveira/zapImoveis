@@ -38,7 +38,10 @@ public class ZapTest {
     @Test
     public void verifica_funcionadmento_lista() {
         mActivityRule.launchActivity(new Intent());
-        roda_lista();
+        for (int i = 0; i < 8; i++) {
+            onView(withId(R.id.zap_list)).perform(RecyclerViewActions.actionOnItemAtPosition(i, new ClickOnImageView()));
+                onView(withContentDescription("Navigate up")).perform(click());
+        }
     }
 
     @Test
@@ -74,19 +77,7 @@ public class ZapTest {
         onView(withId(R.id.menu_item_sort)).perform(click());
         onView(withText(R.string.relevant)).perform(click());
         onView(withId(R.id.menu_item_sort)).perform(click());
-        onView(withText(R.string.txt_dorms)).perform(click());    }
-
-    private void roda_lista(){
-        if(doesViewExist(R.id.zap_list)) {
-            for (int i = 0; i < 9; i++) {
-                onView(withId(R.id.zap_list)).perform(RecyclerViewActions.actionOnItemAtPosition(i, new ClickOnImageView()));
-                if(i != 8){
-                    onView(withContentDescription("Navigate up")).perform(click());
-                }
-            }
-            return;
-        }
-        roda_lista();
+        onView(withText(R.string.txt_dorms)).perform(click());
     }
 
     public boolean doesViewExist(int id) {
